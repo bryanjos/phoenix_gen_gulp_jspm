@@ -17,8 +17,7 @@ The generator also includes a basic [JSPM](http://jspm.io/) setup.
 
 Instructions:
 ```bash
-mix deps.get
-mix phoenix.gen.gulp.jspm <<app_name>>
+mix phoenix.gen.gulp.jspm app_name
 npm install
 jspm install
 mix phoenix.server
