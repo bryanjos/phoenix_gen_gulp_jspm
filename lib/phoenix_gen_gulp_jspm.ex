@@ -8,6 +8,7 @@ defmodule Mix.Tasks.Phoenix.Gen.Gulp.Jspm do
   @gulp_watcher ~s|watchers: [node: ["node_modules/gulp/bin/gulp.js", "watch", "--stdin"]]\n|
   @require_js_matcher ~r|\s*<script src="<%= static_path\(@conn, "\/js\/app.js"\) %>"><\/script>\n|
   @static_list_matcher ~r|\s*only: ~w\(css fonts images js favicon.ico robots.txt\)\n|
+  @socket_import_matcher ~r|\s*import {Socket} from "deps/phoenix/web/static/js/phoenix"\n|
 
   @shortdoc "Replace Brunch with Gulp. Uses babel, cssnext, and jspm"
 
@@ -78,6 +79,18 @@ defmodule Mix.Tasks.Phoenix.Gen.Gulp.Jspm do
     File.mkdir_p! "web/static/js"
     File.touch! "web/static/css/app.css"
     File.touch! "web/static/js/app.js"
+    File.touch! "web/static/js/phoenix.js"
+
+    phoenix_html_js = File.read!("deps/phoenix_html/web/static/js/phoenix_html.js")
+    phoenix_html_js = "\/\/ import socket from \"./socket\"\n\n" <> phoenix_html_js <> "\n" 
+    File.write!("web/static/js/app.js", phoenix_html_js)
+
+    phoenix_js = File.read!("deps/phoenix/web/static/js/phoenix.js")
+    File.write!("web/static/js/phoenix.js", phoenix_js)
+
+    File.read!("web/static/js/socket.js")
+    |> String.replace(@socket_import_matcher, "\nimport {Socket} from \"./phoenix\";\n", global: false)
+    |> (&File.write!("web/static/js/socket.js", &1)).()
   end
 
   defp replace_script_tag_with_system_js! do
