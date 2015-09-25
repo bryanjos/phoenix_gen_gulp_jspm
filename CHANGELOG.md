@@ -1,3 +1,7 @@
+# v1.0.0
+* Enhancements
+  * Using latest for package.json dependencies
+
 # v0.3.0
 * Enhancements
   * Now placing phoenix.js and phoenix_html.js into a web/static/js/phoenix

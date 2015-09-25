@@ -3,12 +3,12 @@
   "repository": {},
   "dependencies": {},
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-babel": "^5.2.1",
-    "gulp-cssnext": "^1.0.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-plumber": "^1.0.1",
-    "jspm": "^0.16.1"
+    "gulp": "latest",
+    "gulp-babel": "latest",
+    "gulp-cssnext": "latest",
+    "gulp-concat": "latest",
+    "gulp-plumber": "latest",
+    "jspm": "latest"
   },
   "jspm": {
     "directories": {
@@ -16,9 +16,9 @@
     },
     "dependencies": {},
     "devDependencies": {
-      "babel": "npm:babel-core@^5.8.22",
-      "babel-runtime": "npm:babel-runtime@^5.8.20",
-      "core-js": "npm:core-js@^1.1.0"
+      "babel": "npm:babel-core@latest",
+      "babel-runtime": "npm:babel-runtime@latest",
+      "core-js": "npm:core-js@latest"
     }
   }
 }

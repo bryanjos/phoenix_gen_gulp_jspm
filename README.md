@@ -9,7 +9,7 @@ This generator replaces the default brunch asset management with Gulp.
 
 ```elixir
   defp deps do
-    [{:phoenix_gen_gulp_jspm, "~> 0.1.0"}]
+    [{:phoenix_gen_gulp_jspm, "~> 1.0"}]
   end
 ```
 
@@ -24,7 +24,6 @@ npm install -g jspm
 Instructions:
 ```bash
 mix phoenix.gen.gulp.jspm app_name
-npm install
-jspm install
+npm install && jspm install
 mix phoenix.server
 ```
